@@ -2,7 +2,6 @@ package F5.NB14;
 
 public class Coins {
 
-
     public static int coin(int goalPoint){
         return coin(0, 1, goalPoint);
     }
@@ -13,6 +12,7 @@ public class Coins {
 
         int ten = coin(cash + 10, currentPoints * 3,  goalPoint);
         int five = coin(cash + 5, currentPoints + 4,  goalPoint);
+
         return Math.min(ten, five);
     }
 

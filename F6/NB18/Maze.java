@@ -14,7 +14,7 @@ public class Maze {
 	
 	public Maze(){
 		try{
-			BufferedReader in = new BufferedReader(new FileReader("Labyrint.txt"));
+			BufferedReader in = new BufferedReader(new FileReader("C:\\KTH\\algoritmerodata\\NbAlgo\\F6\\NB18\\Labyrint2.txt"));
 			rows = Integer.parseInt(in.readLine())+2;
 			columns = Integer.parseInt(in.readLine())+2;
 			mazeMatrix = new Cell[rows][columns];
@@ -63,9 +63,28 @@ public class Maze {
 		return solve(currentP);
 	}
 	private boolean solve(Position p){
-		//algoritm f�r att hitta m�let fr�n ruta p
+		mazeMatrix[p.row][p.column] = Cell.CORRECT;
+		if(p.equals(goal)) return true;
 
-		return true;
+		if(mazeMatrix[p.row - 1][p.column] == Cell.OPEN){
+			mazeMatrix[p.row - 1][p.column] = Cell.VISITED;
+			if(solve(new Position(p.row - 1, p.column))) return true;
+		}
+		if(mazeMatrix[p.row + 1][p.column] == Cell.OPEN){
+			mazeMatrix[p.row + 1][p.column] = Cell.VISITED;
+			if(solve(new Position(p.row + 1, p.column))) return true;
+		}
+		if(mazeMatrix[p.row][p.column + 1] == Cell.OPEN){
+			mazeMatrix[p.row][p.column + 1] = Cell.VISITED;
+			if(solve(new Position(p.row, p.column + 1))) return true;
+		}
+		if(mazeMatrix[p.row][p.column - 1] == Cell.OPEN){
+			mazeMatrix[p.row][p.column - 1] = Cell.VISITED;
+			if(solve(new Position(p.row, p.column - 1))) return true;
+		}
+
+
+		return false;
 	}
 	
 	public void print(){
