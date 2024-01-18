@@ -28,7 +28,4 @@ public class DirectoryEntry {
         DirectoryEntry directoryEntry = (DirectoryEntry)entity;
         return directoryEntry.name.equals(this.name);
     }
-
-
-    
 }

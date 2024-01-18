@@ -41,7 +41,7 @@ public class NB0 {
         nArrayList.add("Alex2");
         nArrayList.add("Alex3");
         System.out.println(nArrayList.remove(3));
-        //System.out.println(nArrayList.indexOf("Alex2"));
+        System.out.println(nArrayList.indexOf("Alex2"));
         System.out.println(nArrayList.indexOf("Alex3"));
         System.out.println(nArrayList);
 
