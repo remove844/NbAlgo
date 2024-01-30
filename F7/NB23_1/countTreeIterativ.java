@@ -1,9 +1,9 @@
-package F7.NB23;
+package F7.NB23_1;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class countTree <E extends Comparable<E>>{
+public class countTreeIterativ<E extends Comparable<E>>{
     private static class Node<E>{
         private E data;
         private Node<E> left, right;
@@ -20,7 +20,7 @@ public class countTree <E extends Comparable<E>>{
 
     private Node<E> root;
 
-    public countTree(){
+    public countTreeIterativ(){
         root = null;
     }
 
@@ -114,8 +114,70 @@ public class countTree <E extends Comparable<E>>{
         return 1 + numberOfNodes(node.left) + numberOfNodes(node.right);
     }
 
+    private E find(E target, Node<E> node){
+        if(node == null){
+            return null;
+        }
+        if(target.compareTo(node.data) == 0){
+            return node.data;
+        }
+        if(target.compareTo(node.data) < 0){
+            return find(target, node.left);
+        }
+        return find(target, node.right);
+    }
+
+    public E find(E target){
+        return find(target, root);
+    }
+
+    private E findIterativ(E target){
+        Node<E> curr = root;
+        for(int i = 0; i < numberOfNodes(); i++){
+            if(curr == null){
+                System.out.println("List dont have element " + target);
+                return null;
+            }
+            if(target.compareTo(curr.data) == 0){
+                return curr.data;
+            }else if(target.compareTo(curr.data) < 0){
+                curr = curr.left;
+            }else{
+                curr = curr.right;
+            }
+        }
+        return null;
+    }
+
+    private E maxRec(Node<E> node) {
+        if (node.right == null) {
+            return node.data;
+        } else {
+            return maxRec(node.right);
+        }
+    }
+
+    public E maxRec() {
+        if (root == null) {
+            return null;
+        }
+        return maxRec(root);
+    }
+
+    public E maxIt() {
+        if (root == null) {
+            return null;
+        }
+        Node<E> current = root;
+        while (current.right != null) {
+            current = current.right;
+        }
+        return current.data;
+    }
+
+
     public static void main(String[] args) {
-        countTree<String> b1 = new countTree<>();
+        countTreeIterativ<String> b1 = new countTreeIterativ<>();
         b1.add("H");
         b1.add("B");
         b1.add("N");
@@ -127,6 +189,9 @@ public class countTree <E extends Comparable<E>>{
         System.out.println(b1);
         System.out.println(b1.numberOfLeaves());
         System.out.println(b1.numberOfNodes());
+
+        System.out.println(b1.maxRec());
+        System.out.println(b1.maxIt());
     }
 
 

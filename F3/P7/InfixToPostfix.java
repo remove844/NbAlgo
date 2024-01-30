@@ -109,7 +109,7 @@ public class InfixToPostfix {
 
     public static void main(String[] args) throws SyntaxErrorException {
         InfixToPostfix infixToPostfix = new InfixToPostfix();
-        System.out.println("Result: " + infixToPostfix.convert("8 + 9"));
+        System.out.println("Result: " + infixToPostfix.convert("8 + 9 - 1"));
     }
 
 

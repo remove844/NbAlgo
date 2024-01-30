@@ -1,7 +1,6 @@
 
 package F4.NB8;
 
-import java.util.Arrays;
 
 public class ArrayQueue<E>{
 	private int front, rear, size, maxSize;
