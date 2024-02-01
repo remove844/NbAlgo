@@ -1,0 +1,5 @@
+1. Det är komplext och tidskrävande att bygga en algoritm vilket gör att det är bättre att testa teoretiskt först.
+
+
+2. En länkad lista är mindre orodo att ta ut element då man gör om pekare istället för att flytta på element som man behöver i en array. En array är dock snabbare att iterera över.
+En länkad lista är svårare att sortera. En array är svårare att lägga till element i.
