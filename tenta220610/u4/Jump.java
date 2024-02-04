@@ -1,5 +1,4 @@
 package tenta220610.u4;
-
 import java.util.ArrayDeque;
 import java.util.Queue;
 
@@ -7,7 +6,6 @@ public class Jump {
 
     private static class State{
         public int pos, i;
-
         public State(int pos, int i) {
             this.pos = pos;
             this.i = i;
