@@ -132,12 +132,7 @@ public class countTreeIterativ<E extends Comparable<E>>{
     }
 
     private E findIterativ(E target){
-        Node<E> curr = root;
-        for(int i = 0; i < numberOfNodes(); i++){
-            if(curr == null){
-                System.out.println("List dont have element " + target);
-                return null;
-            }
+        for(Node<E> curr = root; curr != null; ){
             if(target.compareTo(curr.data) == 0){
                 return curr.data;
             }else if(target.compareTo(curr.data) < 0){
@@ -189,6 +184,7 @@ public class countTreeIterativ<E extends Comparable<E>>{
         System.out.println(b1);
         System.out.println(b1.numberOfLeaves());
         System.out.println(b1.numberOfNodes());
+        System.out.println(b1.findIterativ("G"));
 
         System.out.println(b1.maxRec());
         System.out.println(b1.maxIt());

@@ -8,6 +8,6 @@ public class CountRot {
     }
 
     public static void main(String[] args) {
-        System.out.println(CountRot.Root(12, 1, 0.1));
+        System.out.println(String.format("%.3f", CountRot.Root(144, 1, 3)));
     }
 }

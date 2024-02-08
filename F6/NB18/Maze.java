@@ -14,7 +14,7 @@ public class Maze {
 	
 	public Maze(){
 		try{
-			BufferedReader in = new BufferedReader(new FileReader("C:\\KTH\\algoritmerodata\\NbAlgo\\F6\\NB18\\Labyrint2.txt"));
+			BufferedReader in = new BufferedReader(new FileReader("C:\\1Programering\\algoritmerodata\\Varv2Nb\\F6\\NB18\\Labyrint2.txt"));
 			rows = Integer.parseInt(in.readLine())+2;
 			columns = Integer.parseInt(in.readLine())+2;
 			mazeMatrix = new Cell[rows][columns];
