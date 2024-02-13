@@ -1,0 +1,1 @@
+Hur siljer sig en hashmap mot array i minneshantering?
