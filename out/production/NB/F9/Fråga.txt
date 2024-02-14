@@ -1,0 +1,1 @@
+I java så är quicksort inbyggd. Varför är inte de andra sorteringsalgoritmerna inbyggda?
