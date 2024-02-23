@@ -145,8 +145,6 @@ public class BinarySearchTree<E extends Comparable<E>> {
         bst.add("C");
         System.out.println(bst.nrOneGrandChild());
         System.out.println(bst.secondSmallest());
-
-
     }
     public static void buildTree(BinarySearchTree<String> b){
         b.add("P");
