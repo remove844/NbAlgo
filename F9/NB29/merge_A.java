@@ -31,7 +31,6 @@ public class merge_A {
         int i;
         for (i = 0;i  < a.length/2; i++) {
             b[i] = a[i];
-
         }
         for (;i  < a.length; i++) {
             c[i-a.length/2] = a[i];

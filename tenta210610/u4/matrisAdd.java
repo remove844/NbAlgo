@@ -1,10 +1,7 @@
 package tenta210610.u4;
 
-import java.util.Arrays;
-
 public class matrisAdd {
     public static int count = 0;
-
     public static void main(String[] args){
         int[][] m = {{2,	1,	1,	2,	1,	3},
                 {4,	4,	3,	5,	2,	2},
@@ -12,12 +9,8 @@ public class matrisAdd {
                 {5,	4,	3,	1,	4,	4},
                 {3,	2,	3,	2,	5,	1},
                 {1,	6,	3,	5,	6,	0}};
-        System.out.println("Resultat: "+shortestRoute(m));
-        System.out.println(count);
-        count = 0;
-        System.out.println("Resultat: "+shortestRouteD(m));
-        System.out.println(count);
-        count = 0;
+        System.out.println("Resultat: "+shortestRoute(m) + ", " + count); count = 0;
+        System.out.println("Resultat: "+shortestRouteD(m) + ", " + count); count = 0;
     }
     public static int shortestRouteD(int[][] matrix){
         int[][] memo = new int[matrix.length][matrix[0].length];
@@ -39,7 +32,6 @@ public class matrisAdd {
         int jumpRight = shortestRoute(matrix, row, col +  matrix[row][col], sum + 1);
         int jumpDown = shortestRoute(matrix, row + matrix[row][col], col, sum + 1);
 
-
         return Math.min(jumpRight, jumpDown);
     }
 
@@ -49,12 +41,8 @@ public class matrisAdd {
         if(row >= matrix.length || col >= matrix[0].length) return matrix.length + matrix[0].length;
         if(memo[row][col] != 0) return memo[row][col];
 
-
-
         int jumpRight = shortestRouteD(matrix, row, col +  matrix[row][col], memo);
         int jumpDown = shortestRouteD(matrix, row + matrix[row][col], col, memo);
-
-
 
         return memo[row][col] = 1 + Math.min(jumpRight, jumpDown);
     }
