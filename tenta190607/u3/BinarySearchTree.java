@@ -57,22 +57,39 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     private int height(Node<E> node){
         if(node == null) return 0;
-        int maxLeft = height(node.left);
-        int maxRight = height(node.right);
-        return Math.max(maxRight, maxLeft) + 1;
+        return Math.max(height(node.left), height(node.right)) + 1;
     }
 
-
-
-
-
     public int nrNodesWith2children(){
-        return 0;
+        return nrNodesWith2children(root);
+    }
+
+    private int nrNodesWith2children(Node<E> node){
+        if(node == null) return 0;
+        if(node.left == null) return nrNodesWith2children(node.right);
+        if(node.right == null) return nrNodesWith2children(node.left);
+        return 1 + nrNodesWith2children(node.left) + nrNodesWith2children(node.right);
     }
 
 
     public int nrNodesWith2grandchildren(){
-        return 0;
+        return nrNodesWith2grandchildren(root);
+    }
+
+    private int nrNodesWith2grandchildren(Node<E> node){
+        if(node == null) return 0;
+        if(nrOfChildren(node.left) + nrOfChildren(node.right) == 2){
+            return 1 + nrNodesWith2grandchildren(node.left) + nrNodesWith2grandchildren(node.right);
+        }
+        return nrNodesWith2grandchildren(node.left) + nrNodesWith2grandchildren(node.right);
+    }
+
+    private int nrOfChildren(Node<E> node){
+        if(node == null) return 0;
+        int nrOfChildren=0;
+        if(node.left != null) nrOfChildren++;
+        if(node.right != null) nrOfChildren++;
+        return nrOfChildren;
     }
 
 
