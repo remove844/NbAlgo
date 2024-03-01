@@ -19,8 +19,6 @@ public class shell_B {
             if(gap == 2) gap = 1;
             else gap = gap/2.2;
         }
-
-
     }
 
     public static void main(String[] args) {
