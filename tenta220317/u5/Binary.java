@@ -1,5 +1,7 @@
 package tenta220317.u5;
 
+import tenta210318.u5.BinarySearchTree;
+
 public class Binary<E extends Comparable<E>> {
     private static class Node<E>{
         private E data;
@@ -71,6 +73,23 @@ public class Binary<E extends Comparable<E>> {
         return 1 + Math.max(height(node.left), height(node.right));
     }
 
+    public E secondLargest(){
+        if(root == null) return null;
+        if(root.left == null && root.right == null) return null;
+        return secondLargest(root);
+    }
+
+    private E secondLargest(Node<E> node){
+        if(node.right == null) return max(node.left);
+        if(node.right.right == null && node.right.left == null) return node.data;
+        return secondLargest(node.right);
+    }
+
+    private E max(Node<E> node){
+        if(node == null) return null;
+        if(node.right == null) return node.data;
+        return max(node.right);
+    }
 
     public static void main(String[] args) {
         Binary<Integer> binary = new Binary<>();
@@ -78,7 +97,10 @@ public class Binary<E extends Comparable<E>> {
         binary.add(2);
         binary.add(5);
         binary.add(1);
+        binary.add(3);
+        binary.add(7);
         System.out.println(binary.toString());
+        System.out.println(binary.secondLargest());
 
     }
 

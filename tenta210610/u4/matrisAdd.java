@@ -15,7 +15,7 @@ public class matrisAdd {
     public static int shortestRouteD(int[][] matrix){
         int[][] memo = new int[matrix.length][matrix[0].length];
         int m = shortestRouteD(matrix, 0, 0, memo);
-        if(m  == matrix.length + matrix[0].length) return -1;
+        if(m == 999) return -1;
         return m;
     }
     public static int shortestRoute(int[][] matrix){
@@ -37,8 +37,9 @@ public class matrisAdd {
 
     private static int shortestRouteD(int[][] matrix, int row, int col, int[][]memo){ //33
         count++;
-        if(row == matrix.length-1 && col == matrix[0].length-1) return 0;
-        if(row >= matrix.length || col >= matrix[0].length) return matrix.length + matrix[0].length;
+        if(row == matrix.length - 1 && col == matrix[0].length - 1) return 0;
+        if(row >= matrix.length || col >= matrix[0].length) return 999; ///Varför gör man detta
+
         if(memo[row][col] != 0) return memo[row][col];
 
         int jumpRight = shortestRouteD(matrix, row, col +  matrix[row][col], memo);

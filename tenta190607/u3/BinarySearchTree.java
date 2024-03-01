@@ -62,10 +62,6 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return Math.max(maxRight, maxLeft) + 1;
     }
 
-
-
-
-
     public int nrNodesWith2children(){
         return 0;
     }

@@ -13,9 +13,9 @@ public class BiggestSum {
         count = 0;
         System.out.println(largestSum(w) + ", count = "  + count);
         count = 0;
-        System.out.println(largestSumD(v) + ", count = "  + count);
+        System.out.println(largestSumD(v) + ", D_count = "  + count);
         count = 0;
-        System.out.println(largestSumD(w) + ", count = "  + count);
+        System.out.println(largestSumD(w) + ", D_count = "  + count);
         count = 0;
         System.out.println(largestSumT(v) + ", count = "  + count);
         count = 0;
@@ -38,14 +38,14 @@ public class BiggestSum {
 
     public static int largestSumD(int[] nrArr){
         int[] memo = new int[nrArr.length];
-        Arrays.fill(memo, Integer.MAX_VALUE);
+        Arrays.fill(memo, Integer.MIN_VALUE);
         return largestSumD(nrArr, 0, memo);
     }
 
     private static int largestSumD(int[] nrArr, int i, int[] memo){
         count++;
         if(nrArr.length - 1 < i) return 0;
-        if(memo[i] < Integer.MAX_VALUE) return memo[i];
+        if(memo[i] != Integer.MIN_VALUE) return memo[i];
 
         int tre = largestSumD(nrArr, i + 3, memo);
         int five = largestSumD(nrArr, i + 5, memo);

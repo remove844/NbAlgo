@@ -109,6 +109,9 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return node.data;
     }
 
+
+
+
     public void inOrder2(){
         StringBuilder sb = new StringBuilder();
         inOrder(root, sb);
@@ -125,6 +128,8 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
 
+
+
     public static void buildTree(BinarySearchTree<Integer> b){
         b.add(10);
         b.add(5);
@@ -138,23 +143,26 @@ public class BinarySearchTree<E extends Comparable<E>> {
         b.add(11);
         b.add(14);
     }
+
+
     public static void main(String[] args) {
 
 
         BinarySearchTree<Integer> bst= new BinarySearchTree<>();
         buildTree(bst);
         System.out.println(bst);
-        bst.inOrder2();
+
+
 
         System.out.println("Nr leaves not nodes: "+bst.nrLeavesNotNodes());
         System.out.println("Nr nodes not leaves: "+bst.nrNodesNotLeaves());
 
-        /*
+/*
         for(int i=0;i<19;i++){
             System.out.println("find "+i+" :"+bst.find(i));
             System.out.println("find closest equal or larger to "+i+" :"+bst.findClosestEqualOrLarger(i));
-        }
-        */
+        }*/
+
 
     }
 

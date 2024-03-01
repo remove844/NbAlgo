@@ -45,8 +45,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
                 return true;
             }else
                 return add(data,node.left);
-        else
-        if(node.right==null){
+        else if(node.right==null){
             node.right = new Node<>(data);
             return true;
         }else
