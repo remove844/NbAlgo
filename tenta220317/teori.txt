@@ -1,0 +1,22 @@
+Uppgift 1
+Quicksort sorterar genom att dela upp arrayen i två delar. Den gör detta genom att välja ett pivotelement
+(ett av elementen i arrayen). Den ena delen består då av alla element mindre än detta och den andra av alla
+element större än detta. Om pivotelementet hamnar ungefär i mitten av arrayen betyder det att vi i ett slag
+halverar storleken på arrayerna som ska sorteras. När man halverar materialet i varje steg får vi typiskt O(log n).
+För att göra detta behöver vi gå igenom arrayen och placera elementen på rätt sida av pivotelementet vilket är O(n).
+Resultatet blir då O(nlogn). Dock uppdelningen av arrayen i två jämnstora delar är inte garanterad. Om pivotelementet
+är störst eller minst i arrayen delar vi upp arrayen i en del. Vi kommer alltså i varje steg sortera ett element och
+detta tar O(n) resultatet blir då O(n^2) för att sortera alla element.
+
+Uppgift 2
+I öppen adressering hanterar vi krockar genom att lägga elementet på första lediga plats i arrayen.
+Så om vi anropar put med ett objekt med en nyckel som ger en hashkod som ger oss plats 25 i hashtabellen
+och denna är använd (av ett element vars nyckel inte är lika med elementet vi ska sätta in) så tittar vi
+om det är ledigt på plats 26 och i så fall placerar vi elementet där. Är också 26 full går vi till plats 27 osv.
+Om vi anropar get med en nyckel som ger en hashkod som ger oss plats 25 kollar vi om objektet på plats 25 har
+nyckeln vi letar efter och om inte så tittar vi på plats 26 osv till dess att vi hittar nyckel eller till dess
+att vi hittar en tom plats. När vi ska ta bort ett element kan detta tidigare ha gjort att ett element hamnat
+längre ned i tabell. skulle vi då lämna tomt på denna plats skulle vi inte längre kunna hitta elementet
+(vi slutar ju leta om vi hittar en tom plats). Vi ersätter därför elementet med en dummy.
+
+(obs man behöver inte alls skriva så här mycket för full poäng)

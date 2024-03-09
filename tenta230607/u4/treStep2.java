@@ -18,14 +18,12 @@ public class treStep2 {
         for(int i = 0; i < matrix.length; i++){
             Arrays.fill(memo[i], -1);
         }
-
         return maxSum(matrix, 0, start, memo);
     }
 
     private static int maxSum(int[][] matrix, int row, int col, int[][] memo){
         if(col < 0 || col >= matrix[row].length) return 0;
         if(memo[row][col] != -1) return memo[row][col];
-
         if(row == matrix.length - 1) return memo[row][col] = matrix[row][col];
 
         int sum = maxSum(matrix, row + 1, col, memo);

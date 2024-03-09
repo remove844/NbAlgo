@@ -4,43 +4,52 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class plattorState {
-    /*public static class State{
-        public int length, operations;
+    public static int count1;
+    public static class State{
+        public int length, i;
 
-        public State(int length, int operations) {
+        public State(int length, int i) {
             this.length = length;
-            this.operations = operations;
+            this.i = i;
         }
 
-        public State fore(){
-            return State(current.length - 4, current.operations + 1);
-
-
+        public State four(){
+            return new State(length + 4, i + 1);
+        }
+        public State tre(){
+            return new State(length + 3, i + 1);
+        }
+        public State two(){
+            return new State(length + 2, i + 1);
         }
     }
 
     public static void main(String[] args) {
-        System.out.println("Number of operations: " + nrOfOperations(7));
+        System.out.println("Number of operations: " + nrOfOperations(7) + ", " + count1);
     }
 
     public static int nrOfOperations(int targetL){
         Queue<State> queue = new ArrayDeque<>();
-        queue.offer(new State(targetL, 0));
+        State initial = new State(0, 0);
+        queue.offer(initial);
+
+        int count = 0;
 
         while (!queue.isEmpty()) {
+            count1++;
             State current = queue.poll();
 
-            if (current.length == 1 || current.length == 0 || current.length == 2) {
-                return current.operations;
+            if (current.length == targetL) {
+                count++;
+            } else if (current.length < targetL) {
+                queue.offer(current.two());
+                queue.offer(current.tre());
+                queue.offer(current.four());
             }
-
-            queue.offer(new State(current.length - 4, current.operations + 1));
-            queue.offer(new State(current.length - 3, current.operations + 1));
-            queue.offer(new State(current.length - 2, current.operations + 1));
         }
 
-        return -1;
+        return count;
     }
 
-     */
+
 }

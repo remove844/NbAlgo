@@ -59,7 +59,7 @@ public class BinarySearchTree2 <E extends Comparable<E>>{
     }
 
     public String inOrder1(){
-        if(isEmpty()) return "Empty";
+        if(root == null) return "Empty";
         StringBuilder sb = new StringBuilder();
         inOrder(root, sb);
         return sb.toString();
@@ -103,9 +103,7 @@ public class BinarySearchTree2 <E extends Comparable<E>>{
         return findMax(root);
     }
     public E findMax(Node<E> node){
-        if(node.right != null) {
-            return findMax(node.right);
-        }
+        if(node.right != null) return findMax(node.right);
         return node.data;
     }
 

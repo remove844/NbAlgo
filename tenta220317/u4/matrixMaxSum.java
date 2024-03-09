@@ -10,11 +10,7 @@ public class matrixMaxSum {
                         {5,	-4,	-3,	1,	4,	4},
                         {0,	2,	3,	2,	-5,	1}};
 
-<<<<<<< HEAD
-        System.out.println(highestSumD(m));
-    }
 
-=======
         System.out.println(highestSum(m));
         System.out.println(highestSumD(m));
     }
@@ -34,8 +30,6 @@ public class matrixMaxSum {
         return sum + matrix[row][col];
     }
 
-
->>>>>>> 9e2dbbbce3ca61026592e852456f17bda8523e5d
     public static int highestSumD(int[][] matrix){
         int[][] bestSum = new int[matrix.length][matrix[0].length];
         for (int[] row : bestSum) {

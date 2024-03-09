@@ -100,6 +100,26 @@ public class BinarySearchTree2 <E extends Comparable<E>> {
         return child;
     }
 
+    public int nrOneGrandChild2(){
+        return nrOneGrandChild2(root);
+    }
+
+    private int nrOneGrandChild2(Node<E> node){
+        if(node == null) return 0;
+        if(countChildren(node.left) + countChildren(node.right) == 1){
+            return 1 + nrOneGrandChild2(node.left) + nrOneGrandChild2(node.right);
+        }
+        return nrOneGrandChild2(node.left) + nrOneGrandChild2(node.right);
+    }
+
+    private int countChildren(Node<E> node){
+        if(node == null) return 0;
+        int children = 0;
+        if(node.right != null)children++;
+        if(node.left != null)children++;
+        return children;
+    }
+
 
     public E secondSmallest() {
         if(root == null ||(root.left == null && root.right == null)) return null;
@@ -169,7 +189,8 @@ public class BinarySearchTree2 <E extends Comparable<E>> {
         buildTree(bst);
         System.out.println(bst);
         System.out.println(bst.find("L"));
-        System.out.println(bst.nrOneGrandChild());
+        System.out.println("One gchild 1: " + bst.nrOneGrandChild());
+        System.out.println("One gchild 2: " + bst.nrOneGrandChild2());
         System.out.println(bst.secondSmallest());
         System.out.println(bst.secondLargest());
 

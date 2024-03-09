@@ -43,7 +43,6 @@ public class matrisMinstaSum {
     }
 
     public static int leastSumD(int[][] m){
-        //if (m == null || m.length == 0 || m[0].length == 0) return 0;
         int[][] memo = new int[m.length][m[0].length];
         for (int i = 0; i < m.length;i++){
             Arrays.fill(memo[i], Integer.MAX_VALUE);
@@ -55,8 +54,8 @@ public class matrisMinstaSum {
         count++;
         if(m.length - 1 < row || m[0].length-1 < col) return Integer.MAX_VALUE;
         if(memo[row][col] != Integer.MAX_VALUE) return memo[row][col];
-
         if(m.length -1 == row && m[0].length-1 == col) return memo[row][col] = m[row][col];
+
         int best = Math.min(leastSumD(m, row + 1, col, memo),leastSumD(m, row, col + 1, memo) );
         return memo[row][col] = m[row][col] + best ;
 

@@ -6,19 +6,16 @@ import java.util.Queue;
 public class Jump4 {
     public static class State{
         public int pos, i;
-
         public State(int pos, int i) {
             this.pos = pos;
             this.i = i;
         }
-
         public State jumpRight(){
             return new State(pos + (2*i-1), i + 1);
         }
         public State jumpLeft(){
             return new State(pos - (2*i-1), i + 1);
         }
-
         public boolean canJump(){
             return pos - (2*i-1) >= 0;
         }

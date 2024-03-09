@@ -7,7 +7,8 @@ public class plattor2 {
     public static void main(String[] args){
         System.out.println("20:"+nrOfCombinations(7) + ", " + count);
         count = 0;
-        System.out.println("20:"+nrOfCombinations2(7) + ", " + count);
+        System.out.println("20:"+nrOfCombD(7) + ", " + count);
+        count = 0;
 
     }
 
@@ -26,24 +27,23 @@ public class plattor2 {
 
 
 
-    public static int nrOfCombinations2(int length) {
+    public static int nrOfCombD(int length) {
         int[] memo = new int[length+1];
         if(length < 0) return 0;
         if(length == 0) return 1;
         Arrays.fill(memo, -1);
         memo[1] = 0;
         memo[0] = memo[2] = memo[3] = 1;
-        return nrOfCombinations2(length, memo);
+        return nrOfCombD(length, memo);
     }
 
-    private static int nrOfCombinations2(int length, int[] memo){
+    private static int nrOfCombD(int length, int[] memo){
         count++;
         if(memo[length] != -1) return memo[length];
-
         int nrOfComb = 0;
-        nrOfComb += nrOfCombinations2(length-4, memo);
-        nrOfComb += nrOfCombinations2(length-3, memo);
-        nrOfComb += nrOfCombinations2(length-2, memo);
+        nrOfComb += nrOfCombD(length-4, memo);
+        nrOfComb += nrOfCombD(length-3, memo);
+        nrOfComb += nrOfCombD(length-2, memo);
 
         return memo[length] = nrOfComb;
     }
