@@ -3,7 +3,7 @@ package tenta210610.u5;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class SingleLinkedList<E> implements Iterable<E> {
+public class SingleLinkedList2 <E> implements Iterable<E> {
 
     private static class Node<E> {
 
@@ -18,12 +18,11 @@ public class SingleLinkedList<E> implements Iterable<E> {
     }
 
     private class Itr implements Iterator<E> {
-
         Node<E> start;
+
         public Itr(Node<E> start) {
             this.start = start;
         }
-
 
         @Override
         public boolean hasNext() {
@@ -51,12 +50,11 @@ public class SingleLinkedList<E> implements Iterable<E> {
     public Iterator<E> iterator() {
         return new Itr(head);
     }
-
-    public Iterator<E> iterator(int index) {
+    public Iterator<E> iterator(int index){
         if(index >= size) throw new IndexOutOfBoundsException();
         Node<E> temp = head;
         for(int i = 0; i < index; i++){
-             temp = temp.next;
+            temp = temp.next;
         }
         return new Itr(temp);
     }
@@ -64,7 +62,7 @@ public class SingleLinkedList<E> implements Iterable<E> {
     private Node<E> head;
     private int size;
 
-    public SingleLinkedList() {
+    public SingleLinkedList2() {
         head = null;
         size = 0;
     }
@@ -133,7 +131,7 @@ public class SingleLinkedList<E> implements Iterable<E> {
     }
 
     public static void main(String[] args) {
-        SingleLinkedList<String> list = new SingleLinkedList<>();
+        SingleLinkedList2<String> list = new SingleLinkedList2<>();
         for (int i = 0; i < 7; i++)
         {
             list.add("e" + i);
@@ -143,7 +141,6 @@ public class SingleLinkedList<E> implements Iterable<E> {
         {
             System.out.println(d);
         }
-
         //uppgift 5b
         Iterator<String> iter = list.iterator(3);
         while(iter.hasNext())

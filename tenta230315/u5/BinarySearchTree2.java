@@ -1,5 +1,6 @@
 package tenta230315.u5;
-public class BinarySearchTree<E extends Comparable<E>> {
+
+public class BinarySearchTree2 <E extends Comparable<E>> {
     private static class Node<E>{
         private E data;
         private Node<E> left,right;
@@ -15,7 +16,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     private Node<E> root;
 
-    public BinarySearchTree(){
+    public BinarySearchTree2(){
         root=null;
     }
 
@@ -61,29 +62,33 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     public E find(E target){
-        return find(target, root);
+        return find(root, target);
     }
 
-    private E find(E target, Node<E> node){
+    private E find(Node<E> node, E target){
         if(node == null) return null;
         if(target.compareTo(node.data) == 0) return node.data;
-        if(target.compareTo(node.data) < 0) return find(target, node.left);
-        return find(target, node.right);
+        if(target.compareTo(node.data) < 0){
+            return find(node.left, target);
+        }else {
+            return find(node.right, target);
+        }
     }
 
     public int nrOneGrandChild() {
         return nrOneGrandChild(root);
     }
 
-    private int nrOneGrandChild(Node<E> node){
+    private int nrOneGrandChild(Node<E> node) {
         if(node == null) return 0;
-        if(grandChildren(node) == 1) return 1 + nrOneGrandChild(node.left) + nrOneGrandChild(node.right);
-
-        return nrOneGrandChild(node.left) + nrOneGrandChild(node.right);
+        int count = 0;
+        int leftGrandChildren = getGrandChildrenCount(node.left);
+        int rightGrandChildren = getGrandChildrenCount(node.right);
+        if (leftGrandChildren == 1 || rightGrandChildren == 1) count = 1;
+        return count + nrOneGrandChild(node.left) + nrOneGrandChild(node.right);
     }
-
-    private int grandChildren(Node<E> node){
-        if(node == null) return 0;
+    private int getGrandChildrenCount(Node<E> node) {
+        if (node == null) return 0;
         return nrChildren(node.left) + nrChildren(node.right);
     }
 
@@ -97,8 +102,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
 
     public E secondSmallest() {
-        if(root == null) return null;
-        if(root.left == null && root.right == null) return null;
+        if(root == null ||(root.left == null && root.right == null)) return null;
         return secondSmallest(root);
     }
 
@@ -108,31 +112,39 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return secondSmallest(node.left);
     }
 
+    public E secondLargest() {
+        if(root == null ||(root.left == null && root.right == null)) return null;
+        return secondLargest(root);
+    }
+
+    private E secondLargest(Node<E> node){
+        if(node.right == null) return max(node.left);
+        if(node.right.left == null && node.right.right == null) return node.data;
+        return secondLargest(node.right);
+    }
+
+    public E max(){
+        return max(root);
+    }
+
+    private E max(Node<E> node){
+        if(node == null) return null;
+        if(node.right != null) return max(node.right);
+        return node.data;
+    }
+    public E min(){
+        return min(root);
+    }
+
     private E min(Node<E> node){
         if(node == null) return null;
-        if(node.left == null) return node.data;
-        return min(node.left);
+        if(node.left != null) return min(node.left);
+        return node.data;
     }
 
-    public static void main(String[] args) {
-        BinarySearchTree<String> bst= new BinarySearchTree<>();
-        buildTree(bst);
-        System.out.println(bst);
-        System.out.println(bst.find("L"));
-        System.out.println(bst.nrOneGrandChild());
-        System.out.println(bst.secondSmallest());
-
-        BinarySearchTree<Integer> b1 = new BinarySearchTree<>();
-        b1.add(10);
-        b1.add(7);
-        b1.add(14);
-        b1.add(12);
 
 
-        System.out.println(b1.nrOneGrandChild());
-
-    }
-    public static void buildTree(BinarySearchTree<String> b){
+    public static void buildTree(BinarySearchTree2<String> b){
         b.add("P");
         b.add("E");
         b.add("U");
@@ -151,5 +163,25 @@ public class BinarySearchTree<E extends Comparable<E>> {
         b.add("W");
 
     }
+    public static void main(String[] args) {
 
+        BinarySearchTree2<String> bst= new BinarySearchTree2<>();
+        buildTree(bst);
+        System.out.println(bst);
+        System.out.println(bst.find("L"));
+        System.out.println(bst.nrOneGrandChild());
+        System.out.println(bst.secondSmallest());
+        System.out.println(bst.secondLargest());
+
+        BinarySearchTree2<Integer> b1 = new BinarySearchTree2<>();
+        b1.add(10);
+        b1.add(7);
+        b1.add(14);
+        b1.add(12);
+        b1.add(13);
+        System.out.println("Min=" + b1.min());
+        System.out.println(b1.nrOneGrandChild());
+
+
+    }
 }
