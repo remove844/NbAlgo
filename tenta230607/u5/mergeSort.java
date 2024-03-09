@@ -1,5 +1,4 @@
 package tenta230607.u5;
-
 import java.util.Arrays;
 
 public class mergeSort {

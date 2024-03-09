@@ -18,11 +18,13 @@ public class SingleLinkedList<E> implements Iterable<E> {
     }
 
     private class Itr implements Iterator<E> {
+
+        Node<E> start;
         public Itr(Node<E> start) {
             this.start = start;
         }
 
-        Node<E> start;
+
         @Override
         public boolean hasNext() {
             return start != null;

@@ -69,6 +69,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
             sb.append(current.data + ", ");
             if(current.left != null) queue.offer(current.left);
             if(current.right != null) queue.offer(current.right);
+            System.out.println();
         }
         return sb.toString();
     }

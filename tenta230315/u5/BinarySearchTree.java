@@ -118,33 +118,19 @@ public class BinarySearchTree<E extends Comparable<E>> {
         BinarySearchTree<String> bst= new BinarySearchTree<>();
         buildTree(bst);
         System.out.println(bst);
-        System.out.println(bst.find("X"));
-
-
+        System.out.println(bst.find("L"));
         System.out.println(bst.nrOneGrandChild());
         System.out.println(bst.secondSmallest());
 
-        bst = new BinarySearchTree<>();
-        System.out.println(bst.nrOneGrandChild());
-        System.out.println(bst.secondSmallest());
-        bst.add("M");
-        System.out.println(bst.nrOneGrandChild());
-        System.out.println(bst.secondSmallest());
-        bst.add("R");
-        System.out.println(bst.nrOneGrandChild());
-        System.out.println(bst.secondSmallest());
-        bst.add("P");
-        System.out.println(bst.nrOneGrandChild());
-        System.out.println(bst.secondSmallest());
-        bst.add("G");
-        System.out.println(bst.nrOneGrandChild());
-        System.out.println(bst.secondSmallest());
-        bst.add("J");
-        System.out.println(bst.nrOneGrandChild());
-        System.out.println(bst.secondSmallest());
-        bst.add("C");
-        System.out.println(bst.nrOneGrandChild());
-        System.out.println(bst.secondSmallest());
+        BinarySearchTree<Integer> b1 = new BinarySearchTree<>();
+        b1.add(10);
+        b1.add(7);
+        b1.add(14);
+        b1.add(12);
+
+
+        System.out.println(b1.nrOneGrandChild());
+
     }
     public static void buildTree(BinarySearchTree<String> b){
         b.add("P");
