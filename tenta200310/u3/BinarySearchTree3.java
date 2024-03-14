@@ -81,8 +81,9 @@ public class BinarySearchTree3<E extends Comparable<E>> {
 
     private int nrNodesNotLeaves(Node<E> node){
         if(node == null) return 0;
-        if(node.left != null || node.right != null) return 1 + nrNodesNotLeaves(node.left) + nrNodesNotLeaves(node.right);
-        return nrNodesNotLeaves(node.left) + nrNodesNotLeaves(node.right);
+        if(node.left == null && node.right == null) return 0;
+        return 1 + nrNodesNotLeaves(node.left) + nrNodesNotLeaves(node.right);
+
     }
 
     public E findClosestEqualOrLarger(E target) {

@@ -1,8 +1,9 @@
-package uppgift4;
+package tenta240313.u4;
 
 import java.util.*;
 
 public class Main {
+    public static int calls1;
 
     private static class State{
         int position, nrOfSteps;
@@ -15,9 +16,18 @@ public class Main {
     static long calls, callsDyn;
 
     public static void main(String[] args) {
-        System.out.println(minNrOfStepsA(70));
-        System.out.println(minNrOfStepsB(70));
-        System.out.println(minStepsWidthC(70));
+        System.out.println(minNrOfStepsA(70) + ", " + calls1);
+        calls1 = 0;
+        System.out.println(minNrOfStepsA(623) + ", " + calls1);
+        calls1 = 0;
+        System.out.println(minNrOfStepsB(70) + ", " + calls1);
+        calls1 = 0;
+        System.out.println(minNrOfStepsB(623) + ", " + calls1);
+        calls1 = 0;
+        System.out.println(minStepsWidthC(70) + ", " + calls1);
+        calls1 = 0;
+        System.out.println(minStepsWidthC(623) + ", " + calls1);
+        calls1 = 0;
     }
 
     private static int minNrOfStepsA(int position) {
@@ -26,7 +36,7 @@ public class Main {
     }
 
     private static int minNrOfStepsARec(int position) {
-        calls++;
+        calls1++;
         if(position == 1) return 0;
         if(position<1) return Integer.MAX_VALUE/2;
 
@@ -48,7 +58,7 @@ public class Main {
     }
 
     private static int minNrOfStepsB(int position, int[] memo) {
-        callsDyn++;
+        calls1++;
         if(position<1) return Integer.MAX_VALUE/2;
         if(memo[position]!=-1) return memo[position];
 
@@ -66,7 +76,7 @@ public class Main {
         State currentState;
         que.offer(new State(position,0));
         while(!que.isEmpty()){
-            calls++;
+            calls1++;
             currentState = que.poll();
             if(currentState.position==1) return currentState.nrOfSteps;
             if(currentState.position<1) continue;
@@ -85,7 +95,7 @@ public class Main {
         que.offer(new State(position,0));
         set.add(position);
         while(!que.isEmpty()){
-            callsDyn++;
+            calls1++;
             currentState = que.poll();
             if(currentState.position==1) return currentState.nrOfSteps;
             if(currentState.position<1) continue;
