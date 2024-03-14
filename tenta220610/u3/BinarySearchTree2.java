@@ -1,6 +1,6 @@
 package tenta220610.u3;
 
-public class BinarySearchTree<E extends Comparable<E>> {
+public class BinarySearchTree2 <E extends Comparable<E>> {
 
     private static class Node<E>{
         private E data;
@@ -17,7 +17,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     private Node<E> root;
 
-    public BinarySearchTree(){
+    public BinarySearchTree2(){
         root=null;
     }
 
@@ -50,7 +50,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
             }else {
                 return add(node.left, data);
             }
-        }else {
+        }else{
             if(node.right == null){
                 node.right = new Node<E>(data);
                 return true;
@@ -58,7 +58,6 @@ public class BinarySearchTree<E extends Comparable<E>> {
                 return add(node.right, data);
             }
         }
-
     }
 
     public int size(){
@@ -70,16 +69,18 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return 1 + size(node.right) + size(node.left);
     }
 
-    public static void buildTree(BinarySearchTree<Integer> b, int[] v){
+
+
+    public static void buildTree(BinarySearchTree2<Integer> b, int[] v){
         for(int data:v)
             b.add(data);
     }
 
     public static void main(String[] args) {
-        BinarySearchTree<Integer> bst= new BinarySearchTree<>();
+        BinarySearchTree2<Integer> bst= new BinarySearchTree2<>();
         buildTree(bst,new int[] {30,20,40,15,35,45,37});
         System.out.println("Tree:" + bst + " Size: " + bst.size());
 
     }
-
 }
+

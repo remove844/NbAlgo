@@ -1,5 +1,4 @@
 package tenta200310.u2;
-
 import java.util.Arrays;
 
 public class plattor2 {
@@ -9,7 +8,6 @@ public class plattor2 {
         count = 0;
         System.out.println("20:"+nrOfCombD(7) + ", " + count);
         count = 0;
-
     }
 
     public static int nrOfCombinations(int length) {
@@ -24,8 +22,6 @@ public class plattor2 {
 
         return nrOfComb;
     }
-
-
 
     public static int nrOfCombD(int length) {
         int[] memo = new int[length+1];
