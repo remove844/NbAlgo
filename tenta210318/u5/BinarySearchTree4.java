@@ -1,6 +1,6 @@
-package tenta220610.u3;
+package tenta210318.u5;
 
-public class BinarySearchTree<E extends Comparable<E>> {
+public class BinarySearchTree4 <E extends Comparable<E>> {
 
     private static class Node<E>{
         private E data;
@@ -17,69 +17,63 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     private Node<E> root;
 
-    public BinarySearchTree(){
+    public BinarySearchTree4(){
         root=null;
     }
 
-    private String toString(Node<E> node){
+    private void inOrder(Node<E> node, StringBuilder sb){
         if(node!=null){
-            return toString(node.left) + node + " " + toString(node.right);
+            inOrder(node.left, sb);
+            sb.append(node).append(" ");
+            inOrder(node.right, sb);
         }
-        return "";
     }
 
     @Override
     public String toString(){
-        return toString(root);
+        StringBuilder sb = new StringBuilder();
+        inOrder(root,sb);
+        return sb.toString();
     }
 
     public boolean add(E data){
-        if(root == null) {
-            root = new Node<E>(data);
+        if(root == null){
+            root = new Node<>(data);
             return true;
         }
         return add(root, data);
     }
-
     private boolean add(Node<E> node, E data){
         if(data.compareTo(node.data) == 0) return false;
-        if(data.compareTo(node.data) < 0){
+        if(data.compareTo(node.data) < 0) {
             if(node.left == null){
-                node.left = new Node<E>(data);
+                node.left = new Node<>(data);
                 return true;
             }else {
                 return add(node.left, data);
             }
         }else {
             if(node.right == null){
-                node.right = new Node<E>(data);
+                node.right = new Node<>(data);
                 return true;
             }else {
                 return add(node.right, data);
             }
         }
-
     }
 
-    public int size(){
-        return size(root);
-    }
-
-    private int size(Node<E> node){
-        if(node == null) return 0;
-        return 1 + size(node.right) + size(node.left);
-    }
-
-    public static void buildTree(BinarySearchTree<Integer> b, int[] v){
-        for(int data:v)
-            b.add(data);
-    }
 
     public static void main(String[] args) {
-        BinarySearchTree<Integer> bst= new BinarySearchTree<>();
-        buildTree(bst,new int[] {30,20,40,15,35,45,37});
-        System.out.println("Tree:" + bst + " Size: " + bst.size());
+        BinarySearchTree4<String> b = new BinarySearchTree4<>();
+        b.add("H");
+        b.add("B");
+        b.add("N");
+        b.add("A");
+        b.add("E");
+        b.add("C");
+        b.add("F");
+        b.add("D");
+        System.out.println(b);
 
     }
-
 }
